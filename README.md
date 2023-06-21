@@ -1,49 +1,36 @@
-<p align="center">
-  <a href="https://nextjs-flask-starter.vercel.app/">
-    <img src="https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png" height="96">
-    <h3 align="center">Next.js Flask Starter</h3>
-  </a>
-</p>
+# lllg - Large Language Learning Gateway
 
-<p align="center">Simple Next.js boilerplate that uses <a href="https://flask.palletsprojects.com/">Flask</a> as the API backend.</p>
+## Project Overview
 
-<br/>
+Welcome to lllg - Large Language Learning Gateway. This project is a unique fusion of Next.js and Python, where Next.js powers the frontend while Flask provides the API backend. This blend allows for the creation of dynamic Next.js applications backed by Python AI libraries.
 
-## Introduction
-
-This is a hybrid Next.js + Python app that uses Next.js as the frontend and Flask as the API backend. One great use case of this is to write Next.js apps that use Python AI libraries on the backend.
-
-## How It Works
-
-The Python/Flask server is mapped into to Next.js app under `/api/`.
-
-This is implemented using [`next.config.js` rewrites](https://github.com/vercel/examples/blob/main/python/nextjs-flask/next.config.js) to map any request to `/api/:path*` to the Flask API, which is hosted in the `/api` folder. 
-
-On localhost, the rewrite will be made to the `127.0.0.1:5328` port, which is where the Flask server is running.
-
-In production, the Flask server is hosted as [Python serverless functions](https://vercel.com/docs/concepts/functions/serverless-functions/runtimes/python) on Vercel.
-
-## Demo
-
-https://nextjs-flask-starter.vercel.app/
-
-## Deploy Your Own
-
-You can clone & deploy it to Vercel with one click:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?demo-title=Next.js%20Flask%20Starter&demo-description=Simple%20Next.js%20boilerplate%20that%20uses%20Flask%20as%20the%20API%20backend.&demo-url=https%3A%2F%2Fnextjs-flask-starter.vercel.app%2F&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F795TzKM3irWu6KBCUPpPz%2F44e0c6622097b1eea9b48f732bf75d08%2FCleanShot_2023-05-23_at_12.02.15.png&project-name=Next.js%20Flask%20Starter&repository-name=nextjs-flask-starter&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fnextjs-flask&from=vercel-examples-repo)
-
-## Developing Locally
-
-You can clone & create this repo with the following command
-
-```bash
-npx create-next-app nextjs-flask --example "https://github.com/vercel/examples/tree/main/python/nextjs-flask"
-```
+Our primary objective is to deliver a user-friendly, cloud-based interface. This allows users to upload files, register databases and integrate tools, turning data sources into interactive, conversation-based elements. Employing sophisticated large language models such as GPT-4, lllg invites you to interact with your data in a conversational way never experienced before.
 
 ## Getting Started
 
-First, install the dependencies:
+Follow these steps to get a copy of the project up and running on your local machine for development and testing purposes.
+
+### Setting Up the Environment
+
+We need to create a virtual environment for installing Python dependencies:
+
+```bash
+python3 -m venv .venv
+```
+
+Then, activate the virtual environment:
+
+```bash
+source .venv/bin/activate
+```
+
+Next, install the necessary Python dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Install the required node dependencies using any of the following commands:
 
 ```bash
 npm install
@@ -53,7 +40,9 @@ yarn
 pnpm install
 ```
 
-Then, run the development server:
+### Launching the Servers
+
+Run the development server using one of these commands:
 
 ```bash
 npm run dev
@@ -63,16 +52,10 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+After the server is running, open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-The Flask server will be running on [http://127.0.0.1:5328](http://127.0.0.1:5328) – feel free to change the port in `package.json` (you'll also need to update it in `next.config.js`).
+In the background, the Flask server will be running on [http://127.0.0.1:5328](http://127.0.0.1:5328). If you want to change the port, update it in the `package.json` and `next.config.js` files.
 
-## Learn More
+## Explore the new era of data interaction
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/) - learn about Flask features and API.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Start your journey with lllg - Large Language Learning Gateway and interact with your data in a more meaningful, conversation-based way. Whether it's files, databases, or tools, bring them all together under one roof and have productive chat conversations powered by state-of-the-art large language models. Embrace the power of language and turn your data interaction into an insightful conversation. Dive in today!

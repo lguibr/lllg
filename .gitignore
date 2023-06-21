@@ -35,3 +35,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 __pycache__
+
+#Chroma db
+chroma_dbs/
+
+#Temporary files
+temp/
+
+.vscode
+.cred.json
