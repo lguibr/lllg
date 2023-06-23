@@ -9,7 +9,7 @@ export default function VectorStoreQueryModal({
   isOpen,
   onRequestClose,
 }) {
-  const [answer, setAnswer] = useState(null);
+  const [answer, setAnswer] = useState("");
   const [token, setToken] = useState("");
 
   const {
@@ -17,16 +17,17 @@ export default function VectorStoreQueryModal({
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = async (data) => {
-    const response = await vectorStoreQuery(
+  const onSubmit = async (request) => {
+    const { data } = await vectorStoreQuery(
       vectorStoreName,
-      { query: data.query },
+      { query: request.query },
       token
     );
-    if (response instanceof Error) {
-      console.error(response);
+
+    if (data instanceof Error) {
+      console.error(data);
     } else {
-      setAnswer(response.answer);
+      setAnswer(data);
     }
   };
 
