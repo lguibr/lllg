@@ -63,8 +63,9 @@ const Content = styled.div`
 `;
 
 const Container = styled.div`
+  z-index: 999;
   position: sticky;
   top: 0;
   width: 100%;
-  border-bottom: 1px solid red;
+  background-color: ${({ theme }) => theme.colors.background ?? "red"};
 `;
