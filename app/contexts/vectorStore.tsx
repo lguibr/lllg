@@ -7,16 +7,15 @@ interface VectorStoresProviderProps {
   children: React.ReactNode;
 }
 
-type VectorStoreType = {
-  [key: string]: {
-    name: string;
-    description: string;
-    contexts: string[];
-  };
-};
+interface VectorStore {
+  name: string;
+  description: string;
+  contexts: string[];
+}
+type RawVectorStore = { [name: string]: VectorStore };
 
 interface VectorStoresContextValue {
-  vectorStores: VectorStoreType[];
+  vectorStores: VectorStore[];
   selectedVectorStores: string[];
   handleVectorStoreSelect: (vectorStore: string) => void;
   handleVectorStoreDelete: (vectorStoreName: string) => void;
@@ -29,8 +28,10 @@ const VectorStoresContext = createContext<VectorStoresContextValue | undefined>(
 export const VectorStoresProvider: React.FC<VectorStoresProviderProps> = ({
   children,
 }) => {
-  const [vectorStores, setVectorStores] = useState<any[]>([]);
-  const [selectedVectorStores, setSelectedVectorStores] = useState<any[]>([]);
+  const [vectorStores, setVectorStores] = useState<VectorStore[]>([]);
+  const [selectedVectorStores, setSelectedVectorStores] = useState<string[]>(
+    []
+  );
 
   const [token, setToken] = useState("");
 
@@ -43,7 +44,25 @@ export const VectorStoresProvider: React.FC<VectorStoresProviderProps> = ({
     if (result instanceof Error) {
       console.error(result);
     } else {
-      setVectorStores(result);
+      // Transform the result to an array of VectorStore
+      const transformRawVectorStores = (
+        rawVectorStores: RawVectorStore[]
+      ): VectorStore[] => {
+        let transformedVectorStores: VectorStore[] = [];
+
+        rawVectorStores.forEach((rawStore) => {
+          Object.entries(rawStore).forEach(([name, data]) => {
+            transformedVectorStores.push({
+              name: name,
+              description: data.description,
+              contexts: data.contexts,
+            });
+          });
+        });
+
+        return transformedVectorStores;
+      };
+      setVectorStores(transformRawVectorStores(result));
     }
   };
 

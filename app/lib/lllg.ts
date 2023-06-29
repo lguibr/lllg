@@ -258,10 +258,15 @@ export async function vectorStoreQuery(
     return e as Error;
   }
 }
+interface RetrieverData {
+  vectorStore: string;
+  retrieverType: string;
+}
 
 export interface CreateRetrieverPayload {
   name: string;
   description: string;
+  retrievers: RetrieverData[];
 }
 
 export async function createRetriever(
@@ -269,7 +274,7 @@ export async function createRetriever(
   token: string
 ): Promise<Response | Error> {
   try {
-    const response = await fetch("/api/retrievers", {
+    const response = await fetch("/api/retriever", {
       // update the path as per your server endpoint
       method: "POST",
       headers: {
@@ -292,7 +297,7 @@ export async function createRetriever(
 
 export async function listRetrievers(token: string): Promise<any[] | Error> {
   try {
-    const response = await fetch("/api/retrievers", {
+    const response = await fetch("/api/retriever", {
       // update the path as per your server endpoint
       method: "GET",
       headers: {
@@ -318,7 +323,7 @@ export async function deleteRetriever(
   token: string
 ): Promise<Response | Error> {
   try {
-    const response = await fetch(`/api/retrievers/${retrieverName}`, {
+    const response = await fetch(`/api/retriever/${retrieverName}`, {
       // update the path as per your server endpoint
       method: "DELETE",
       headers: {
