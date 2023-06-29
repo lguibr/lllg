@@ -1,10 +1,10 @@
 "use client";
-import firebase from "@/firebase/clientApp";
+import firebase from "@/app/lib/firebase";
 import VectorStore from "./component";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/navigation";
-import { VectorStoresProvider } from "@/contexts/vectorStore";
+import { VectorStoresProvider } from "@/app/contexts/vectorStore";
 
 export default function Home() {
   const auth = getAuth(firebase);

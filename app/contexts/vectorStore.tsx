@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, createContext, useContext } from "react";
-import { listVectorStores, deleteVectorStore } from "@/lib/lllg";
+import { listVectorStores, deleteVectorStore } from "@/app/lib/lllg";
 
 interface VectorStoresProviderProps {
   children: React.ReactNode;

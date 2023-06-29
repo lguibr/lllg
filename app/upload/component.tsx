@@ -1,10 +1,10 @@
-import { useUpload } from "@/contexts/files";
-import { Text } from "@/components/Text";
+import { useUpload } from "@/app/contexts/files";
+import { Text } from "@/app/components/Text";
 import styled from "styled-components";
-import Button from "@/components/Button";
+import Button from "@/app/components/Button";
 import ContextModal from "./modal";
 import { useState } from "react";
-import FileGrid from "@/components/FileGrid";
+import FileGrid from "@/app/components/FileGrid";
 
 export default function Upload() {
   const {

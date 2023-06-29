@@ -94,7 +94,7 @@ def question_answer(id):
         data = request.get_json()
         query = data["query"]
         chain = load_qa_with_sources_chain(
-            llm=ChatOpenAI(model_name="gpt-4", temperature=0)
+            llm=ChatOpenAI(model_name="gpt-4", temperature=0),
         )
 
         docs = vectorstore.similarity_search(query, k=6)

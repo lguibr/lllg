@@ -258,3 +258,81 @@ export async function vectorStoreQuery(
     return e as Error;
   }
 }
+
+export interface CreateRetrieverPayload {
+  name: string;
+  description: string;
+}
+
+export async function createRetriever(
+  payload: CreateRetrieverPayload,
+  token: string
+): Promise<Response | Error> {
+  try {
+    const response = await fetch("/api/retrievers", {
+      // update the path as per your server endpoint
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      throw new Error("Error while creating retriever");
+    }
+
+    return response;
+  } catch (e) {
+    console.log(e);
+    return e as Error;
+  }
+}
+
+export async function listRetrievers(token: string): Promise<any[] | Error> {
+  try {
+    const response = await fetch("/api/retrievers", {
+      // update the path as per your server endpoint
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Error while fetching retrievers");
+    }
+
+    const data = await response.json();
+
+    return data.retrievers; // make sure the key matches what your server returns
+  } catch (e) {
+    console.log(e);
+    return e as Error;
+  }
+}
+
+export async function deleteRetriever(
+  retrieverName: string,
+  token: string
+): Promise<Response | Error> {
+  try {
+    const response = await fetch(`/api/retrievers/${retrieverName}`, {
+      // update the path as per your server endpoint
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Error while deleting retriever");
+    }
+
+    return response;
+  } catch (e) {
+    console.log(e);
+    return e as Error;
+  }
+}

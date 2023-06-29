@@ -1,9 +1,9 @@
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
-import { useUpload } from "@/contexts/files";
+import { useUpload } from "@/app/contexts/files";
 import styled from "styled-components";
 import { useEffect } from "react";
-import FileGrid from "@/components/FileGrid";
+import FileGrid from "@/app/components/FileGrid";
 
 export default function ContextModal({ isOpen, onRequestClose }) {
   const { selectedUploadedFiles, handleCreateContext } = useUpload();

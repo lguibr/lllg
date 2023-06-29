@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
-import { vectorStoreQuery } from "@/lib/lllg";
+import { vectorStoreQuery } from "@/app/lib/lllg";
 
 export default function VectorStoreQueryModal({
   vectorStoreName,

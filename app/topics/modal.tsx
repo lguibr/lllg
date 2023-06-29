@@ -1,11 +1,11 @@
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
-import { useContexts } from "@/contexts/contexts";
+import { useTopics } from "@/app/contexts/topics";
 import styled from "styled-components";
-import ContextGrid from "@/components/FileGrid";
+import ContextGrid from "@/app/components/FileGrid";
 
 export default function VectorStoreModal({ isOpen, onRequestClose }) {
-  const { selectedContexts, handleCreateVectorStore } = useContexts();
+  const { selectedTopics, handleCreateVectorStore } = useTopics();
 
   const {
     register,
@@ -16,7 +16,7 @@ export default function VectorStoreModal({ isOpen, onRequestClose }) {
     handleCreateVectorStore({
       name: data.name,
       description: data.description,
-      contexts: selectedContexts,
+      topics: selectedTopics,
     });
     console.log(data);
   };
@@ -44,7 +44,7 @@ export default function VectorStoreModal({ isOpen, onRequestClose }) {
           placeholder="Description"
         />
         {errors.description && <span>This field is required</span>}
-        <ContextGrid files={selectedContexts} />
+        <ContextGrid files={selectedTopics} />
         <button type="submit">Create</button>
       </Form>
     </Modal>

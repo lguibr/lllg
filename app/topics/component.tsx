@@ -1,21 +1,17 @@
 "use client";
-import { useContexts } from "@/contexts/contexts";
-import { Text } from "@/components/Text";
+import { useTopics } from "@/app/contexts/topics";
+import { Text } from "@/app/components/Text";
 import styled from "styled-components";
-import FileGrid from "@/components/FileGrid";
+import FileGrid from "@/app/components/FileGrid";
 import { useState } from "react";
 import VectorStoreModal from "./modal";
-import Button from "@/components/Button";
+import Button from "@/app/components/Button";
 
-export default function Context(): JSX.Element {
-  const {
-    contexts,
-    selectedContexts,
-    handleContextSelect,
-    handleContextDelete,
-  } = useContexts();
+export default function Topic(): JSX.Element {
+  const { topics, selectedTopics, handleTopicSelect, handleTopicDelete } =
+    useTopics();
 
-  console.log("contexts", contexts);
+  console.log("topics", topics);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -28,18 +24,18 @@ export default function Context(): JSX.Element {
 
   return (
     <ContextsContainer>
-      <Text as="h2">Existing Contexts</Text>
+      <Text as="h2">Existing Topics</Text>
       <ContextGrid>
-        {contexts.map((context, index) =>
-          Object.entries(context).map(([key, contextData], index: number) => (
+        {topics.map((topic, index) =>
+          Object.entries(topic).map(([key, contextData], index: number) => (
             <ContextContainer
               key={index}
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                handleContextSelect(key);
+                handleTopicSelect(key);
               }}
-              isSelected={selectedContexts.includes(contextData.name)}
+              isSelected={selectedTopics.includes(contextData.name)}
             >
               <Text uppercase weight={"bolder"} size="xsmall">
                 {contextData.name}
@@ -48,10 +44,10 @@ export default function Context(): JSX.Element {
               <FileGrid files={contextData.files} />
               <DeleteButton
                 onClick={(e) => {
-                  console.log("delete context");
+                  console.log("delete topic");
                   e.stopPropagation();
                   e.preventDefault();
-                  handleContextDelete(key);
+                  handleTopicDelete(key);
                 }}
               >
                 X
@@ -65,13 +61,13 @@ export default function Context(): JSX.Element {
         <Button
           onClick={(e) => {
             e.preventDefault();
-            console.log(selectedContexts);
+            console.log(selectedTopics);
 
-            if (!!selectedContexts.length) openModal();
+            if (!!selectedTopics.length) openModal();
           }}
-          disabled={!selectedContexts.length}
+          disabled={!selectedTopics.length}
         >
-          Create Context Vector Store
+          Create Topic Vector Store
         </Button>
       </FloatingButtonContainer>
       <VectorStoreModal isOpen={isModalOpen} onRequestClose={closeModal} />

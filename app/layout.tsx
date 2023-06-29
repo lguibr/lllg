@@ -1,8 +1,8 @@
 "use client";
 
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import GlobalStyle from "@/components/globalStyles";
+import Footer from "@/app/components/Footer";
+import Header from "@/app/components/Header";
+import GlobalStyle from "@/app/components/globalStyles";
 
 import styled, { DefaultTheme, ThemeProvider } from "styled-components";
 

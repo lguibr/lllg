@@ -1,5 +1,5 @@
 "use client";
-import firebase from "@/firebase/clientApp";
+import firebase from "@/app/lib/firebase";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/navigation";

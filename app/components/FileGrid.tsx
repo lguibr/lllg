@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { Text } from "@/components/Text";
+import { Text } from "@/app/components/Text";
 
 interface FileGridProps {
   files: File[] | string[];

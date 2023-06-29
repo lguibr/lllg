@@ -1,10 +1,10 @@
 "use client";
-import firebase from "@/firebase/clientApp";
+import firebase from "@/app/lib/firebase";
 import Upload from "./component";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/navigation";
-import { UploadProvider } from "@/contexts/files";
+import { UploadProvider } from "@/app/contexts/files";
 
 export default function Home() {
   const auth = getAuth(firebase);

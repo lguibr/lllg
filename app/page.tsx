@@ -1,5 +1,5 @@
 "use client";
-import Text from "@/components/Text";
+import Text from "@/app/components/Text";
 
 export default function Home() {
   return (

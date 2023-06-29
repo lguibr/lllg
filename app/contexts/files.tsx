@@ -1,14 +1,14 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { getAuth, User } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import firebase from "@/firebase/clientApp";
+import firebase from "@/app/lib/firebase";
 import {
   listSources,
   uploadSource,
   deleteSource,
   CreateContextPayload,
   createContext as apiCreateContext,
-} from "@/lib/lllg";
+} from "@/app/lib/lllg";
 import { ChangeEvent, FormEvent, DragEvent } from "react";
 
 type UploadContextProps = {

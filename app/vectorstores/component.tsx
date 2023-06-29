@@ -1,12 +1,12 @@
 "use client";
 
-import { useVectorStores } from "@/contexts/vectorStore";
-import { Text } from "@/components/Text";
+import { useVectorStores } from "@/app/contexts/vectorStore";
+import { Text } from "@/app/components/Text";
 import styled from "styled-components";
-import FileGrid from "@/components/FileGrid";
+import FileGrid from "@/app/components/FileGrid";
 import { useState } from "react";
 import VectorStoreQueryModal from "./modal";
-import Button from "@/components/Button";
+import Button from "@/app/components/Button";
 
 export default function VectorStores(): JSX.Element {
   const {

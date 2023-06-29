@@ -2,9 +2,9 @@ import { getAuth } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import styled from "styled-components";
-import firebase from "@/firebase/clientApp";
-import Text from "@/components/Text";
-import Button from "@/components/Button";
+import firebase from "@/app/lib/firebase";
+import Text from "@/app/components/Text";
+import Button from "@/app/components/Button";
 
 const Header: React.FC = () => {
   const auth = getAuth(firebase);
@@ -20,12 +20,16 @@ const Header: React.FC = () => {
       href: "/upload",
     },
     {
-      name: "Contexts",
-      href: "/contexts",
+      name: "Topics",
+      href: "/topics",
     },
     {
       name: "Vectorstores",
       href: "/vectorstores",
+    },
+    {
+      name: "Chat",
+      href: "/chat",
     },
   ];
 
