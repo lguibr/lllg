@@ -5,6 +5,7 @@ import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/navigation";
 import { VectorStoresProvider } from "@/app/contexts/vectorStore";
+import { RetrieversProvider } from "../contexts/retrievers";
 
 export default function Home() {
   const auth = getAuth(firebase);
@@ -19,7 +20,9 @@ export default function Home() {
   return (
     <main>
       <VectorStoresProvider>
-        <VectorStore />
+        <RetrieversProvider>
+          <VectorStore />
+        </RetrieversProvider>
       </VectorStoresProvider>
     </main>
   );

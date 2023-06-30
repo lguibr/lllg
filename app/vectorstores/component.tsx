@@ -5,8 +5,9 @@ import { Text } from "@/app/components/Text";
 import styled from "styled-components";
 import FileGrid from "@/app/components/FileGrid";
 import { useState } from "react";
-import VectorStoreQueryModal from "./modal";
+import VectorStoreQueryModal from "./QAModal";
 import Button from "@/app/components/Button";
+import ChatModal from "./ChatModal";
 
 export default function VectorStores(): JSX.Element {
   const {
@@ -16,51 +17,46 @@ export default function VectorStores(): JSX.Element {
     handleVectorStoreDelete,
   } = useVectorStores();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isQAModalOpen, setIsQAModalOpen] = useState(false);
+  const openQAModal = () => setIsQAModalOpen(true);
+  const closeQAModal = () => setIsQAModalOpen(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const [isCreateChatModalOpen, setIsCreateChatModalOpen] = useState(false);
+  const openModalCreateChatModal = () => setIsCreateChatModalOpen(true);
+  const closeModalCreateChatModal = () => setIsCreateChatModalOpen(false);
+  console.log({ vectorStores });
 
   return (
     <VectorStoresContainer>
       <Text as="h2">Existing Vector Stores</Text>
       <VectorStoreGrid>
-        {vectorStores.map((vectorStore, index) =>
-          Object.entries(vectorStore).map(
-            ([key, vectorStoreData], index: number) => (
-              <VectorStoreContainer
-                key={index}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  e.preventDefault();
-                  handleVectorStoreSelect(key);
-                }}
-                isSelected={selectedVectorStores.includes(vectorStoreData.name)}
-              >
-                <Text uppercase weight={"bolder"} size="xsmall">
-                  {vectorStoreData.name}
-                </Text>
-                <Text size="xsmall">{vectorStoreData.description}</Text>
-                <FileGrid files={vectorStoreData.contexts} />
-                <DeleteButton
-                  onClick={(e) => {
-                    console.log("delete vectorStore");
-                    e.stopPropagation();
-                    e.preventDefault();
-                    handleVectorStoreDelete(key);
-                  }}
-                >
-                  X
-                </DeleteButton>
-              </VectorStoreContainer>
-            )
-          )
-        )}
+        {vectorStores.map((vectorStoreData, index) => (
+          <VectorStoreContainer
+            key={index}
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              handleVectorStoreSelect(vectorStoreData.name);
+            }}
+            isSelected={selectedVectorStores.includes(vectorStoreData.name)}
+          >
+            <Text uppercase weight={"bolder"} size="xsmall">
+              {vectorStoreData.name}
+            </Text>
+            <Text size="xsmall">{vectorStoreData.description}</Text>
+            <FileGrid files={vectorStoreData.contexts ?? []} />
+            <DeleteButton
+              onClick={(e) => {
+                console.log("delete vectorStore");
+                e.stopPropagation();
+                e.preventDefault();
+                handleVectorStoreDelete(vectorStoreData.name);
+              }}
+            >
+              X
+            </DeleteButton>
+          </VectorStoreContainer>
+        ))}
       </VectorStoreGrid>
 
       <FloatingButtonContainer>
@@ -69,18 +65,32 @@ export default function VectorStores(): JSX.Element {
             e.preventDefault();
             console.log(selectedVectorStores);
 
-            if (!!selectedVectorStores.length) openModal();
+            if (!!selectedVectorStores.length) openQAModal();
           }}
           disabled={!selectedVectorStores.length}
         >
           Make a question for a context
         </Button>
-      </FloatingButtonContainer>
+        <Button
+          onClick={(e) => {
+            e.preventDefault();
+            console.log(selectedVectorStores);
 
+            if (!!selectedVectorStores.length) openModalCreateChatModal();
+          }}
+          disabled={!selectedVectorStores.length}
+        >
+          Create a new chat from selected vector stores
+        </Button>
+      </FloatingButtonContainer>
+      <ChatModal
+        isOpen={isCreateChatModalOpen}
+        onRequestClose={closeModalCreateChatModal}
+      />
       <VectorStoreQueryModal
         vectorStoreName={selectedVectorStores[0]}
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
+        isOpen={isQAModalOpen}
+        onRequestClose={closeQAModal}
       />
     </VectorStoresContainer>
   );
