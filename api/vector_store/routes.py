@@ -11,6 +11,7 @@ import os
 
 vectorstore = Blueprint("vectorstore", __name__)
 VECTORSTORE_FOLDER = "temp/vectorstores"
+
 SOURCE_FOLDER = "temp/sources"
 CHROMA_DB_FOLDER = "temp/chroma_dbs"
 EMBEDDING_FUNCTION = OpenAIEmbeddings()
@@ -23,7 +24,7 @@ def create_vectorstore():
         data = request.get_json()
         vectorstore_name = data["name"]
         description = data["description"]
-        context_names = data["contexts"]
+        context_names = data["topics"]
         vector_store_dir = os.path.join(CHROMA_DB_FOLDER, vectorstore_name)
 
         download_contexts_to_source_dir(context_names, SOURCE_FOLDER)

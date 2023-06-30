@@ -5,6 +5,7 @@ import styled from "styled-components";
 import firebase from "@/app/lib/firebase";
 import Text from "@/app/components/Text";
 import Button from "@/app/components/Button";
+import Link from "next/link";
 
 const Header: React.FC = () => {
   const auth = getAuth(firebase);
@@ -50,7 +51,16 @@ const Header: React.FC = () => {
           </Button>
         </Content>
       );
-    return <Content>Not logged in</Content>;
+    return (
+      <Content>
+        <Text>Not logged in</Text>
+        <Button>
+          <Link href="/auth">
+            <Text>Login</Text>
+          </Link>
+        </Button>
+      </Content>
+    );
   };
   return <Container>{header()}</Container>;
 };
