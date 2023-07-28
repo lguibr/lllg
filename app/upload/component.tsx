@@ -89,7 +89,6 @@ export default function Upload() {
 
 const Form = styled.form`
   position: relative;
-  border: 12px dotted red;
   min-height: 100%;
   height: max-content;
   box-sizing: border-box;
@@ -109,7 +108,6 @@ const UploadArea = styled.div`
 
 const FloatingButtonContainer = styled.div`
   position: absolute;
-  border: 2px dotted green;
   bottom: 20px;
   right: 20px;
 `;

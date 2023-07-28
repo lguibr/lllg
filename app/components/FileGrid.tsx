@@ -17,7 +17,7 @@ const FileGrid: React.FC<FileGridProps> = ({
   return (
     <FileGridContainer>
       {files.map((file, index) => {
-        const fileName = file instanceof File ? file.name : file;
+        const fileName: string = file instanceof File ? file.name : file;
         return (
           <FileContainer
             onClick={() => onFileSelect && onFileSelect(file)}
@@ -25,7 +25,7 @@ const FileGrid: React.FC<FileGridProps> = ({
             key={index}
           >
             <FileIcon src="/file.svg" alt="file icon" />
-            <Text weight={"bolder"} size="xsmall">
+            <Text weight={"bolder"} size="xs" fluid={false}>
               {fileName}
             </Text>
             {onFileDelete && (
@@ -84,7 +84,6 @@ const DeleteButton = styled.button`
 const FileGridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  border: 8px dotted orange;
   box-sizing: border-box;
 `;
 

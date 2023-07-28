@@ -1,14 +1,7 @@
+import theme from "@/public/theme";
 import styled, { css } from "styled-components";
 
-const sizeStyles = {
-  xsmall: "0.5em",
-  small: "0.8em",
-  medium: "1em",
-  large: "1.4em",
-  xlarge: "2em",
-} as const;
-
-interface TextProps {
+export interface TextProps {
   as?:
     | "h1"
     | "h2"
@@ -24,7 +17,7 @@ interface TextProps {
   capitalize?: boolean;
   uppercase?: boolean;
   lowercase?: boolean;
-  size?: keyof typeof sizeStyles;
+  size?: keyof (typeof theme)["fontSizes"];
   textDecoration?: "none" | "underline" | "line-through";
   transform?: "none" | "capitalize" | "uppercase" | "lowercase";
   weight?:
@@ -50,10 +43,11 @@ export const Text = styled.p<TextProps>`
     uppercase,
     lowercase,
     fluid = true,
-    size = "medium",
+    size = "md",
     textDecoration = "none",
     transform = "none",
     weight = "normal",
+    theme,
   }) => css`
     text-transform: ${capitalize
       ? "capitalize"
@@ -64,9 +58,13 @@ export const Text = styled.p<TextProps>`
       : transform};
     text-decoration: ${textDecoration};
     font-weight: ${weight};
-    font-size: ${fluid ? "clamp(1rem, 2vw, 1.5rem)" : sizeStyles[size]};
-    font-family: "Inter", sans-serif;
-    color: ${({ theme }) => theme.colors.text ?? "red"};
+    font-family: ${theme.fonts.body};
+    color: ${theme.colors.text};
+    font-size: ${fluid
+      ? `clamp(${theme.numericFontSizes[size] ?? 1}rem, 1vw, ${
+          theme.numericFontSizes[size] * 1.5 ?? 1.5
+        }rem)})`
+      : theme.fontSizes[size]};
   `}
 `;
 

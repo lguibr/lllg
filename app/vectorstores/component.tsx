@@ -97,7 +97,6 @@ export default function VectorStores(): JSX.Element {
 }
 
 const VectorStoresContainer = styled.div`
-  border: 12px dotted red;
   position: relative;
   min-height: 500px;
   height: max-content;
@@ -109,7 +108,6 @@ const VectorStoresContainer = styled.div`
 
 const FloatingButtonContainer = styled.div`
   position: absolute;
-  border: 2px dotted green;
   bottom: 20px;
   right: 20px;
 `;
@@ -117,7 +115,6 @@ const FloatingButtonContainer = styled.div`
 const VectorStoreGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  border: 8px dotted orange;
   box-sizing: border-box;
 `;
 

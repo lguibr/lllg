@@ -1,4 +1,4 @@
-import Modal from "react-modal";
+import Modal from "@/app/components/Modal";
 import { useForm, useFieldArray } from "react-hook-form";
 import styled from "styled-components";
 
@@ -48,11 +48,7 @@ export default function RetrieverModal({ isOpen, onRequestClose }) {
     console.log(data);
   };
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      contentLabel="Create Retriever"
-    >
+    <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
       <Form
         onSubmit={(e) => {
           e.stopPropagation();
@@ -118,7 +114,6 @@ export default function RetrieverModal({ isOpen, onRequestClose }) {
 
 const Form = styled.form`
   position: relative;
-  border: 12px dotted red;
   min-height: 100%;
   height: max-content;
   box-sizing: border-box;

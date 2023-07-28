@@ -1,4 +1,4 @@
-import Modal from "react-modal";
+import Modal from "@/app/components/Modal";
 import { useForm } from "react-hook-form";
 import { useUpload } from "@/app/contexts/files";
 import styled from "styled-components";
@@ -22,11 +22,7 @@ export default function ContextModal({ isOpen, onRequestClose }) {
   };
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      contentLabel="Create Context"
-    >
+    <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
       <Form
         onSubmit={(e) => {
           e.stopPropagation();
@@ -53,7 +49,6 @@ export default function ContextModal({ isOpen, onRequestClose }) {
 
 const Form = styled.form`
   position: relative;
-  border: 12px dotted red;
   min-height: 100%;
   height: max-content;
   box-sizing: border-box;

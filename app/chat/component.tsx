@@ -3,6 +3,7 @@ import { Text } from "@/app/components/Text";
 import styled from "styled-components";
 import Button from "@/app/components/Button";
 import { useState } from "react";
+import VectorStoreModal from "./modal";
 
 export default function Retrievers(): JSX.Element {
   const {
@@ -62,6 +63,7 @@ export default function Retrievers(): JSX.Element {
         <Button
           onClick={(e) => {
             e.preventDefault();
+
             console.log(selectedRetrievers);
 
             if (!!selectedRetrievers.length) openModal();
@@ -71,19 +73,18 @@ export default function Retrievers(): JSX.Element {
           Create Retriever
         </Button>
       </FloatingButtonContainer>
+      <VectorStoreModal isOpen={isModalOpen} onRequestClose={closeModal} />
     </RetrieversContainer>
   );
 }
 
 const FloatingButtonContainer = styled.div`
   position: absolute;
-  border: 2px dotted green;
   bottom: 20px;
   right: 20px;
 `;
 
 const RetrieversContainer = styled.div`
-  border: 12px dotted red;
   min-height: 500px;
   height: max-content;
   box-sizing: border-box;
@@ -95,7 +96,6 @@ const RetrieversContainer = styled.div`
 const RetrieverGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  border: 8px dotted orange;
   box-sizing: border-box;
 `;
 

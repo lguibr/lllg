@@ -39,7 +39,7 @@ const Header: React.FC = () => {
     if (user)
       return (
         <Content>
-          <Text>Logged in as {user.displayName}</Text>
+          <Text>Logged in as Skilled Hacker</Text>
           <Text>Links:</Text>
           {links.map((link) => (
             <Text key={link.name}>
@@ -77,5 +77,5 @@ const Container = styled.div`
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.background ?? "red"};
+  background-color: ${({ theme }) => theme.colors.primary};
 `;

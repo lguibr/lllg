@@ -11,7 +11,7 @@ body {
   font-size: 18px;
   box-sizing: border-box;
   min-height: 100vh;
-
+  background-color: ${({ theme }) => theme.colors.background};
 }
 
 * {

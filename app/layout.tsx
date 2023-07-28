@@ -3,17 +3,9 @@
 import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
 import GlobalStyle from "@/app/components/globalStyles";
+import theme from "@/public/theme";
 
-import styled, { DefaultTheme, ThemeProvider } from "styled-components";
-
-const theme: DefaultTheme = {
-  colors: {
-    background: "#111",
-    text: "white",
-    primary: "#111",
-    secondary: "#0070f3",
-  },
-};
+import styled, { ThemeProvider } from "styled-components";
 
 export default function RootLayout({
   children,
@@ -21,23 +13,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <html lang="en">
+    <html lang="en">
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
         <Body>
           <Header />
           {children}
           <Footer />
         </Body>
-      </html>
-    </ThemeProvider>
+      </ThemeProvider>
+    </html>
   );
 }
 
 const Body = styled.body`
   background-color: ${({ theme }) => theme.colors?.background ?? "blue"}};
   box-sizing: border-box;
-  border: 2px dotted blue;
   display: grid;
   grid-template-rows: max-content 1fr max-content;
 `;

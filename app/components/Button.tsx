@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
 
-type ButtonProps = {
+export type ButtonProps = {
   variant?: "primary" | "secondary";
   disabled?: boolean;
 };
@@ -26,7 +26,6 @@ export const StyledButton = styled.button<ButtonProps>`
   &:focus {
     outline: none;
   }
-  border: 2px dotted green;
 `;
 
 export default StyledButton;

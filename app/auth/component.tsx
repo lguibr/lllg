@@ -3,6 +3,8 @@ import firebase from "@/app/lib/firebase";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/navigation";
+import Text from "@/app/components/Text";
+import Button from "@/app/components/Button";
 
 export default function SignInScreen() {
   const router = useRouter();
@@ -27,8 +29,8 @@ export default function SignInScreen() {
 
   return (
     <div>
-      <h1>Sign In</h1>
-      <button onClick={signIn}>Sign In</button>
+      <Text>Sign In</Text>
+      <Button onClick={signIn}>Sign In</Button>
     </div>
   );
 }

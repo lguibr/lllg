@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Modal from "react-modal";
+import Modal from "@/app/components/Modal";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { vectorStoreQuery } from "@/app/lib/lllg";
@@ -32,11 +32,7 @@ export default function VectorStoreQueryModal({
   };
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      contentLabel="Vector Store Query"
-    >
+    <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
       <Form
         onSubmit={(e) => {
           e.stopPropagation();
@@ -57,7 +53,6 @@ export default function VectorStoreQueryModal({
 
 const Form = styled.form`
   position: relative;
-  border: 12px dotted red;
   min-height: 100%;
   height: max-content;
   box-sizing: border-box;
