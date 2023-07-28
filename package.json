@@ -8,9 +8,12 @@
     "dev": "concurrently \"pnpm run next-dev\" \"pnpm run flask-dev\"",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006 -s ./public",
+    "build-storybook": "storybook build -s ./public"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.5.1",
     "@types/node": "20.1.4",
     "@types/react": "^18.2.9",
     "@types/react-dom": "^18.2.4",
@@ -19,14 +22,33 @@
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
     "firebase": "^9.22.2",
+    "markdown-to-jsx": "^7.2.1",
+    "monaco-editor": "^0.39.0",
+    "monaco-editor-webpack-plugin": "^7.0.1",
     "next": "^13.4.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-firebase-hooks": "^5.1.1",
     "react-google-button": "^0.7.2",
     "react-hook-form": "^7.44.3",
-    "react-modal": "^3.16.1",
+    "react-monaco-editor": "^0.53.0",
     "styled-components": "^6.0.0-rc.3",
     "typescript": "5.0.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.27",
+    "@storybook/addon-interactions": "^7.0.27",
+    "@storybook/addon-links": "^7.0.27",
+    "@storybook/blocks": "^7.0.27",
+    "@storybook/nextjs": "^7.0.27",
+    "@storybook/react": "^7.0.27",
+    "@storybook/testing-library": "^0.0.14-next.2",
+    "eslint-plugin-storybook": "^0.6.12",
+    "storybook": "^7.0.27"
   }
 }
