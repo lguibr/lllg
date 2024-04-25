@@ -1,61 +1,110 @@
-# lllg - Large Language Learning Gateway
+# Large Language Learning Gateway (lllg)
 
-## Project Overview
+Welcome to the **Large Language Learning Gateway (lllg)**, a platform that integrates Next.js and Python to facilitate conversational interactions with data. This project utilizes large language models like GPT-4 alongside Python's robust back-end capabilities to offer a cloud-based interface for file and database interactions through natural language.
 
-Welcome to lllg - Large Language Learning Gateway. This project is a unique fusion of Next.js and Python, where Next.js powers the frontend while Flask provides the API backend. This blend allows for the creation of dynamic Next.js applications backed by Python AI libraries.
+*Note: This project is currently a work in progress and not stable. Features and functionality are in active development, and the interface and capabilities may change.*
 
-Our primary objective is to deliver a user-friendly, cloud-based interface. This allows users to upload files, register databases and integrate tools, turning data sources into interactive, conversation-based elements. Employing sophisticated large language models such as GPT-4, lllg invites you to interact with your data in a conversational way never experienced before.
+## Features
+
+- **Conversational Interface**: Users can interact with data through a conversational interface powered by GPT-4, simplifying complex data queries.
+- **File and Database Management**: Upload and manage files and databases with ease, leveraging a straightforward web interface.
+- **Basic RAG Pattern**: Implement a basic Retrieve-Augment-Generate (RAG) pattern for data retrieval and interaction using large language models.
+- **Real-time Processing**: Enjoy real-time updates and responses, ensuring a smooth user experience.
+- **Secure Authentication**: Utilize Firebase for robust user authentication, securing access to the platform.
+
+## Technologies Used
+
+- **Frontend**: React, Next.js, Styled Components
+- **Backend**: Python, Flask
+- **Database**: Firebase, Google Cloud Firestore
+- **Storage**: Google Cloud Storage
+- **AI and Machine Learning**: OpenAI GPT-4
+- **Development Tools**: Git, Vercel (for deployment), Storybook (for UI testing)
 
 ## Getting Started
 
-Follow these steps to get a copy of the project up and running on your local machine for development and testing purposes.
+### Prerequisites
 
-### Setting Up the Environment
+- Node.js
+- Yarn or npm
+- Python 3.8+
+- pip
+- Virtual environment (recommended)
 
-We need to create a virtual environment for installing Python dependencies:
+### Installation
+
+1. **Clone the repository:**
 
 ```bash
-python3 -m venv .venv
+git clone https://github.com/yourgithub/large-language-learning-gateway.git
+cd large-language-learning-gateway
 ```
 
-Then, activate the virtual environment:
+2. **Set up the Python virtual environment and install dependencies:**
 
 ```bash
-source .venv/bin/activate
-```
-
-Next, install the necessary Python dependencies:
-
-```bash
+python -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Install the required node dependencies using any of the following commands:
+3. **Install Node modules:**
 
 ```bash
-npm install
-# or
-yarn
-# or
-pnpm install
+yarn install
 ```
 
-### Launching the Servers
+### Running the Application
 
-Run the development server using one of these commands:
+1. **Start the Next.js development server:**
 
 ```bash
-npm run dev
-# or
 yarn dev
-# or
-pnpm dev
 ```
 
-After the server is running, open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **In a new terminal, start the Flask API server:**
 
-In the background, the Flask server will be running on [http://127.0.0.1:5328](http://127.0.0.1:5328). If you want to change the port, update it in the `package.json` and `next.config.js` files.
+```bash
+cd api
+flask run
+```
 
-## Explore the new era of data interaction
+3. **Navigate to `http://localhost:3000` to view the app.**
 
-Start your journey with lllg - Large Language Learning Gateway and interact with your data in a more meaningful, conversation-based way. Whether it's files, databases, or tools, bring them all together under one roof and have productive chat conversations powered by state-of-the-art large language models. Embrace the power of language and turn your data interaction into an insightful conversation. Dive in today!
+## Project Structure
+
+```
+large-language-learning-gateway/
+├── api/
+│   ├── models/
+│   ├── services/
+│   ├── routes/
+│   └── __init__.py
+├── app/
+│   ├── components/
+│   ├── contexts/
+│   ├── pages/
+│   └── styles/
+├── public/
+│   ├── icons/
+│   └── theme.ts
+├── .env
+├── .gitignore
+├── README.md
+├── package.json
+└── requirements.txt
+```
+
+## Contributing
+
+Contributions are welcome! Here’s how to get started:
+
+1. Fork the repository.
+2. Create a new branch for your features or fixes.
+3. Commit your changes with descriptive messages.
+4. Push the branch to your fork.
+5. Submit a pull request describing your changes.
+
+## License
+
+This project is licensed under the MIT License. For more details, see the [LICENSE.md](LICENSE.md) file.
