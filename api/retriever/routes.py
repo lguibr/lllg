@@ -4,10 +4,10 @@ from services.firebase import db, bucket
 
 from langchain.retrievers.merger_retriever import MergerRetriever
 
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.vectorstores import Chroma
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import Chroma
 from langchain.chains import ConversationalRetrievalChain
-from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 
 
 retriever = Blueprint("retriever", __name__)
@@ -81,7 +81,6 @@ def update_retriever(id):
 @retriever.route("/api/retriever/<id>/load", methods=["GET"])
 def load_retriever(id):
     try:
-        # get retriever from firestore
         ref = db.collection("retrievers").document(id)
         retriever = ref.get().to_dict()
 
@@ -96,7 +95,6 @@ def load_retriever(id):
 
 
 def load_vectorstores(vectorstores):
-    # for each vectorstore in retriever, download it from the bucket
     for vectorstore in vectorstores:
         local_folder = os.path.join(RETRIEVER_FOLDER, vectorstore)
         blob_folder = f"temp/chroma_dbs/{vectorstore}"
@@ -118,7 +116,6 @@ def create_chroma_instance(directory):
 def build_retriever(retriever_id):
     app.logger.info(f"Building retriever {retriever_id}")
     try:
-        # get retriever from firestore
         ref = db.collection("retrievers").document(retriever_id)
         retriever = ref.get().to_dict()
         app.logger.info("retriever")
@@ -130,11 +127,9 @@ def build_retriever(retriever_id):
             app.logger.info(vectorstores)
             retrievers = []
             for vectorstore in vectorstores:
-                # Get the vectorstore data from firestore
                 vectorstore_ref = db.collection("vectorstores").document(vectorstore)
                 vectorstore_data = vectorstore_ref.get().to_dict()
 
-                # Get the local directory for this vectorstore
                 local_folder = os.path.join(
                     RETRIEVER_FOLDER, vectorstore_data["blob_name"]
                 )
@@ -147,7 +142,6 @@ def build_retriever(retriever_id):
                 else:
                     app.logger.error(f"Vectorstore directory {local_folder} not found.")
 
-            # Create MergerRetriever
             if retrievers:
                 lotr = MergerRetriever(retrievers=retrievers)
                 return lotr

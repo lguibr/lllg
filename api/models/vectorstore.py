@@ -1,4 +1,3 @@
-# models/vectorstore.py
 from app.extensions import db
 from .base import BaseModel
 

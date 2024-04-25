@@ -10,7 +10,6 @@ import logging
 def create_app():
     app = Flask(__name__)
 
-    # Initialize all your modules
     init_sources(app)
     init_context(app)
     init_vector_store(app)

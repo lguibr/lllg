@@ -1,11 +1,11 @@
 from flask import Blueprint, request, jsonify, current_app as app
 from api.context.routes import get_context_by_name
-from langchain.chat_models import ChatOpenAI
-from langchain.vectorstores import Chroma
+from langchain_community.chat_models import ChatOpenAI
+from langchain_community.vectorstores import Chroma
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains.qa_with_sources import load_qa_with_sources_chain
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.document_loaders import DirectoryLoader
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.document_loaders import DirectoryLoader
 from services.firebase import bucket, db
 import os
 

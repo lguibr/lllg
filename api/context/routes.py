@@ -3,8 +3,6 @@ from services.firebase import db
 
 contexts = Blueprint("contexts", __name__)
 
-# Initialize Firebase app with your project's credentials
-
 
 def get_context_by_name(name):
     ref = db.collection("contexts").document(name)
